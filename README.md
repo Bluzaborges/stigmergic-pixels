@@ -9,41 +9,40 @@ A real-time SDL2 experiment with agents initialized at random positions and movi
 1. Download the ZIP from the [latest release](https://github.com/Bluzaborges/stigmergic-pixels/releases) and extract all its files into one folder.
 2. Open the extracted folder and run `stigmergic-pixels.exe`.
 
-## Build from source
+## Requirements
 
-You need Git, a C++17-compatible compiler, CMake 3.21 or later, Ninja, and SDL2. Dear ImGui 1.92.9 is downloaded automatically by CMake during the first configuration.
+- A C++17-compatible compiler
+- CMake 3.21 or later
+- Ninja
+- SDL2
 
-### Install build tools on Windows (MSYS2 UCRT64)
+Git is also required during configuration because CMake downloads Dear ImGui 1.92.9 automatically.
 
-From an MSYS2 UCRT64 terminal:
+### Windows with MSYS2
+
+Install the development tools from an MSYS2 UCRT64 terminal:
 
 ```bash
 pacman -S --needed git mingw-w64-ucrt-x86_64-toolchain mingw-w64-ucrt-x86_64-cmake mingw-w64-ucrt-x86_64-ninja mingw-w64-ucrt-x86_64-SDL2
 ```
 
-### Install build tools on Debian or Ubuntu
+### Debian and Ubuntu
 
 ```bash
 sudo apt update
 sudo apt install git build-essential cmake ninja-build libsdl2-dev
 ```
 
-### Compile the application
+## Build
 
-Create an optimized build from the repository root:
+From the repository root:
 
 ```bash
 cmake --preset release
 cmake --build --preset release
 ```
 
-### Run the local build
-
-```bash
-./build/release/stigmergic-pixels
-```
-
-On Windows, use `./build/release/stigmergic-pixels.exe`.
+This creates an optimized executable for normal use. Development builds use the `debug` preset, as described in the editor sections below.
 
 ## Controls
 
