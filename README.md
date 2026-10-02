@@ -59,15 +59,37 @@ On Windows, use `./build/release/stigmergic-pixels.exe`.
 - `R`: clear the trails and randomize every agent again
 - `Escape`: close the application
 
-## Develop with Visual Studio Code
+## Visual Studio Code
 
-Install the Microsoft **C/C++** and **CMake Tools** extensions. On Windows, open the repository from an MSYS2 UCRT64 terminal:
+Install the Microsoft **C/C++** and **CMake Tools** extensions. On Windows, open the repository from an MSYS2 UCRT64 terminal so the editor uses the correct toolchain:
 
 ```bash
 cd /c/path/to/stigmergic-pixels
 code .
 ```
 
-To debug, open the command palette, run **CMake: Select Configure Preset**, select **Debug**, add a breakpoint, and start **CMake: Debug**.
+If the `code` command is unavailable, add Visual Studio Code to `PATH` through its installer or launch its `bin/code` script directly.
 
-Make sure the CMake Tools output references `C:\msys64\ucrt64` instead of `C:\mingw64`.
+CMake Tools recognizes the project presets automatically. Before debugging, open the command palette, run **CMake: Select Configure Preset**, and select **Debug**. Then add a breakpoint and run **CMake: Debug**.
+
+The CMake Tools output should show `build/debug` as the build directory. **CMake: Debug** uses the selected build; it does not switch a Release build to Debug automatically. No `launch.json` is required.
+
+Make sure the CMake Tools output references `C:\msys64\ucrt64` rather than `C:\mingw64`.
+
+## Code::Blocks
+
+Install Code::Blocks in the MSYS2 UCRT64 environment:
+
+```bash
+pacman -S --needed mingw-w64-ucrt-x86_64-codeblocks
+```
+
+From the repository root, generate a Code::Blocks project:
+
+```bash
+cmake -S . -B build/codeblocks -G "CodeBlocks - Ninja" -DCMAKE_BUILD_TYPE=Debug
+```
+
+CMake marks this generator as deprecated, but it can still generate the project. Open `build/codeblocks/stigmergic-pixels.cbp` in Code::Blocks and select the `stigmergic-pixels` target. Add a breakpoint beside a source line, then choose **Debug > Start / Continue**.
+
+If Code::Blocks cannot find the debugger, open **Settings > Debugger**, select the default GDB configuration, and set its executable to `C:\msys64\ucrt64\bin\gdb.exe`.
