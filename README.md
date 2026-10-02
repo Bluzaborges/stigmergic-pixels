@@ -9,6 +9,22 @@ A real-time SDL2 experiment with agents initialized at random positions and movi
 1. Download the ZIP from the [latest release](https://github.com/Bluzaborges/stigmergic-pixels/releases) and extract all its files into one folder.
 2. Open the extracted folder and run `stigmergic-pixels.exe`.
 
+## Controls
+
+| Input | Action |
+| --- | --- |
+| `Attraction` | Follow trails left by the same species |
+| `Repulsion` | Avoid the shared trail with one species, or trails left by other species when multiple species are active |
+| `Agents` | Change the population from 1 to 10,000,000 agents |
+| `Species` | Divide the agents into one to eight color-coded species |
+| `Speed` | Change movement speed while preserving continuous trails |
+| `Diffusion` | Control how quickly trails spread into neighboring pixels |
+| `Evaporation` | Control how quickly trails disappear |
+| `Reset` | Clear the trails and randomize every agent again |
+| `Space` | Pause or resume the simulation |
+| `R` | Clear the trails and randomize every agent again |
+| `Esc` | Close the application |
+
 ## Requirements
 
 - A C++17-compatible compiler
@@ -43,20 +59,6 @@ cmake --build --preset release
 ```
 
 This creates an optimized executable for normal use. Development builds use the `debug` preset, as described in the editor sections below.
-
-## Controls
-
-- `Attraction`: follow trails left by the same species
-- `Repulsion`: avoid the shared trail with one species, or trails left by other species when multiple species are active
-- `Agents`: change the population from 1 to 10,000,000 agents
-- `Species`: divide the agents into one to eight color-coded species
-- `Speed`: change movement speed while preserving continuous trails
-- `Diffusion`: control how quickly trails spread into neighboring pixels
-- `Evaporation`: control how quickly trails disappear
-- `Reset`: clear the trails and randomize every agent again
-- `Space`: pause or resume the simulation
-- `R`: clear the trails and randomize every agent again
-- `Escape`: close the application
 
 ## Visual Studio Code
 
